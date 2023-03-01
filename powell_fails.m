@@ -1,4 +1,6 @@
 % Octave reproducer.
+% https://octave.sourceforge.io/optim/package_doc/powell.html
+%
 % pkg install -forge statistics struct optim
 pkg load optim
 
@@ -88,5 +90,6 @@ end
 
 start = [2.25, 0.47];
 
-o = optimset('MaxIter', 100, 'TolFun', 1E-10);
+% Parameters for equivalence with default fmin_powell values.
+o = optimset('MaxIter', length(x) * 1000, 'TolFun', 0.0001, 'TolX', 0.0001);
 [x_optim, y_min, conv, iters, nevs] = powell(@(c_s) calc_sse(c_s, x, y), start, o)
