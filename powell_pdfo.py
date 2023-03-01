@@ -16,3 +16,7 @@ start = [2.25, 0.47]
 for method in ['UOBYQA', 'NEWUOA', 'BOBYQA', 'LINCOA', 'COBYLA']:
     print(f'\nPDFO minimization with {method}:')
     print(pdfo(calc_sse, start, args=(x, y), method=method))
+
+# Try classical mode
+print('\nPDFO Powell, classical mode')
+print(pdfo(calc_sse, start, args=(x, y), options={'classical': True}))
